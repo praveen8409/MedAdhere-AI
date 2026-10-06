@@ -174,11 +174,15 @@ export default function App() {
     }
   }, [activePatientId]);
 
+  const API_BASE =
+    import.meta.env.VITE_API_BASE_URL || '/api';
   // Server-Sent Events (SSE) Persistent Push Subscription (Page 6 Specification)
   useEffect(() => {
     let eventSource = null;
     try {
-      eventSource = new EventSource('/api/notifications/stream');
+      eventSource = new EventSource(
+        `${API_BASE}/notifications/stream`
+      );
 
       eventSource.onopen = () => {
         setSseConnected(true);

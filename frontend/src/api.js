@@ -1,4 +1,5 @@
-const API_BASE = '/api';
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL || '/api';
 
 export const getAuthToken = () => localStorage.getItem('medadhere_token') || '';
 export const setAuthToken = (token) => {
